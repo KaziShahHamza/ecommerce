@@ -1,29 +1,22 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Navbar } from "@/components/navbar";
 
 export const metadata: Metadata = {
   title: "An ecommerce app",
   description: "Buy your favorite products",
 };
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+      <body className="flex min-h-full flex-col bg-white">
+        <Navbar />
+        <main className="flex-grow container mx-auto px-4 py-8">
+          {children}
+        </main>
       </body>
     </html>
   );
